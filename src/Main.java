@@ -4,6 +4,7 @@ class Person {
     private String gender;
     private int age;
 
+    public Person() {};
     public Person( String name, String surname, String gender, int age) {
         this.name = name;
         this.surname = surname;
@@ -52,6 +53,7 @@ class Employee extends Person {
     int idNumber;
     boolean isWorking;
 
+    public Employee() {};
     public Employee(String name, String surname, String gender, int age, String position, double salary, int idNumber, boolean isWorking) {
         super(name, surname, gender, age);
         this.position = position;
@@ -79,14 +81,22 @@ class Manager extends Employee {
     int numberOfPeople;
     String department;
 
+    public Manager(int numberOfPeople, String department) {
+        this.numberOfPeople = numberOfPeople;
+        this.department = department;
+    }
     public Manager(String name, String surname, String gender, int age, String position, double salary, int idNumber, boolean isWorking, int numberOfPeople, String department) {
         super(name, surname, gender, age, position, salary, idNumber, isWorking);
         this.numberOfPeople = numberOfPeople;
         this.department = department;
     }
 
-    public void assignTask(String task) {
-        System.out.println("Przydzielono " + task + " " + getName());
+    public void assignTask(String task, Employee employee) {
+        System.out.println("Przydzielono " + task + " dla " + employee.getName() + " " + employee.getSurname());
+    }
+    public void showInformation() {
+        System.out.println("Number of people: " + numberOfPeople);
+        System.out.println("Department name: " + department);
     }
 
     public void changeDepartment(String department) {
@@ -94,14 +104,14 @@ class Manager extends Employee {
     }
 }
 
-
-
-
-
-
-
 public class Main {
     public static void main(String[] args) {
+        Manager manager = new Manager(1, "Sklep");
+
+        Employee e1 = new Employee("Bartosz", "Szary", "kot", 78, "kasjer", 90000, 1, false);
+        Employee e2 = new Employee("Bartosz", "Szary", "kot", 78, "kasjer", 90000, 1, false);
+
+        manager.assignTask("mycie kibla", e);
 
     }
 }
