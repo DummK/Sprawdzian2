@@ -63,16 +63,35 @@ class Employee extends Person {
     }
 
     public void startWork() {
+        System.out.println("\n----------------");
         System.out.println("Rozpoczęto prace");
+        System.out.println("----------------\n");
         isWorking = true;
     }
     public void stopWork() {
+        System.out.println("\n----------------");
         System.out.println("Zakończono prace");
+        System.out.println("----------------\n");
         isWorking = false;
     }
 
     public void increaseSalary(double addedMoney) {
+        System.out.println("\n---------------");
+        System.out.println("Zwiększono płace");
+        System.out.println("---------------\n");
         salary += addedMoney;
+    }
+    public void showEmployeeInformation() {
+        System.out.println("\n-----------------");
+        System.out.println("Name: " + getName());
+        System.out.println("Surname: " + getSurname());
+        System.out.println("Gender: " + getGender());
+        System.out.println("Age: " + getAge());
+        System.out.println("Position: " + position);
+        System.out.println("Salary: " + salary);
+        System.out.println("ID: " + idNumber);
+        System.out.println("IsWorking: " + isWorking);
+        System.out.println("------------------\n");
     }
 
 }
@@ -92,14 +111,21 @@ class Manager extends Employee {
     }
 
     public void assignTask(String task, Employee employee) {
+        System.out.println("\n-------------------------");
         System.out.println("Przydzielono " + task + " dla " + employee.getName() + " " + employee.getSurname());
+        System.out.println("---------------------------\n");
     }
-    public void showInformation() {
+    public void showManagerInformation() {
+        System.out.println("\n-----------------");
         System.out.println("Number of people: " + numberOfPeople);
         System.out.println("Department name: " + department);
+        System.out.println("-----------------\n");
     }
 
     public void changeDepartment(String department) {
+        System.out.println("\n-------------");
+        System.out.println("Zmiana działu na " + department);
+        System.out.println("-------------\n");
         this.department = department;
     }
 }
@@ -108,10 +134,20 @@ public class Main {
     public static void main(String[] args) {
         Manager manager = new Manager(1, "Sklep");
 
-        Employee e1 = new Employee("Bartosz", "Szary", "kot", 78, "kasjer", 90000, 1, false);
-        Employee e2 = new Employee("Bartosz", "Szary", "kot", 78, "kasjer", 90000, 1, false);
+        Employee e1 = new Employee("Bartosz", "Szary", "niebinarny", 78, "kasjer", 90000, 1, false);
+        Employee e2 = new Employee("Szymon", "Czarny", "helikopter szturmowy", 112, "sekretarz", 91, 2, false);
 
-        manager.assignTask("mycie kibla", e);
+
+        manager.assignTask("mycie kibla", e1);
+        manager.assignTask("Mycie podłogi", e2);
+        manager.showManagerInformation();
+        manager.changeDepartment("jaskinia");
+        manager.showManagerInformation();
+        e1.showEmployeeInformation();
+        e1.startWork();
+        e1.showEmployeeInformation();
+        e1.increaseSalary(2900);
+        e1.showEmployeeInformation();
 
     }
 }
